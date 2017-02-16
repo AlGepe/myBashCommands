@@ -1,6 +1,11 @@
 #! /bin/bash
 
-test "$(pidof spotify | wc -w)" == 0 && (spotify; exit 1)
+isOpen=false
+test "$(pidof spotify | wc -w)" == 0 && (spotify;isOpen=true; exit 1)
+
+if [ "$isOpen" == false ]; then 
+	wmctrl -a spotify
+fi
 #$isSpotyRunning="$(pidof spotify | wc -w)"
 #if [$(pidof spotify | wc -w) -eq 0]
 #then
