@@ -3,7 +3,7 @@
 USRNAME="AlGepe" # Set default username
 echo "Username set to: ${2:-$USRNAME}"
 echo "Repository name set to: $1"
-echo" " 
-echo" " 
+echo " " 
+echo " " 
 # Watch out for quotes, doble quotes and other b**ches
 curl -u ${2:-$USRNAME} https://api.github.com/user/repos -d {\"name\":\"$1\"}
