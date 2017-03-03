@@ -1,14 +1,7 @@
 #! /bin/bash
 
-# Command takes 2 variables 
-	# $1 = Name of the repo [Compulsory]
-	# $2 = UserName for github [default = AlGepe]
-
 	echo $1
 USRNAME="AlGepe" # Set default username
 echo "Username set to: ${2:-$USRNAME}"
 # Watch out for quotes, doble quotes and other b**ches
 curl -u ${2:-$USRNAME} https://api.github.com/user/repos -d {\"name\":\"$1\"}
-
-# Original command to creat repository myVimWiki for user AlGepe
-# curl -u 'AlGepe' https://api.github.com/user/repos -d '{"name":"myVimWiki"}'
