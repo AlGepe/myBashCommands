@@ -15,3 +15,7 @@ Creates a new github repository with name $1 for user $2. $2 is optional and dea
 ## spoti
 
 Checks if Spotify is opened to then open it (if not open) or bring window to front (if already open)
+
+## updateWork
+
+Updates git repositories for current and child folders up to depth input by user (default = 2)
