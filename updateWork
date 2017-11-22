@@ -1,9 +1,6 @@
 #! /bin/bash
 
-# if $1 has [fileNamed .git]
-	git pull
-# end if
+# $1 = Max depth for find from current folder
 
-# for FOLDER in CURRENT-FOLDER
-	# call this script w/ $1=FOLDER
-# end for
+DFLTDEPTH='3'
+find ./ -maxdepth ${1:-DFLTDEPTH}-name ".git" -execdir pwd \; -execdir git pull \;
