@@ -1,0 +1,16 @@
+#! /bin/bash
+
+# $1 = Max depth for find from current folder
+
+BLACK="\033[30m"
+RED="\033[31m"
+GREEN="\033[32m"
+YELLOW="\033[33m"
+BLUE="\033[34m"
+PINK="\033[35m"
+CYAN="\033[36m"
+WHITE="\033[37m"
+NC="\033[0;39m"
+
+find ./ -maxdepth ${1:-2} -name ".git"  -execdir pwd \; -execdir git status \;
+#find ./ -maxdepth ${1:-2} -name ".git" -execdir printf "${YELLOW}$(pwd)\n${NC}" \; -execdir git status \;
