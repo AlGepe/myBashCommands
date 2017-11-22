@@ -2,5 +2,4 @@
 
 # $1 = Max depth for find from current folder
 
-DFLTDEPTH='3'
-find ./ -maxdepth ${1:-DFLTDEPTH}-name ".git" -execdir pwd \; -execdir git pull \;
+find ./ -maxdepth 3 -name ".git" -execdir pwd \; -execdir git pull \;
