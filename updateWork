@@ -1,3 +1,9 @@
 #! /bin/bash
 
-git pull
+# if $1 has [fileNamed .git]
+	git pull
+# end if
+
+# for FOLDER in CURRENT-FOLDER
+	# call this script w/ $1=FOLDER
+# end for
