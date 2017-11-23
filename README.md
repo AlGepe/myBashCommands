@@ -4,9 +4,9 @@ Collection of bash commands created by me to achieve extra functionality or simp
 
 ## Usage:
 
-Add: export PATH=$PATH":path/to/folder" to [.bashrc] file and change permissions on executable files [chmod +x fileName]
+Add: `export PATH=$PATH":path/to/folder"` to [.bashrc] file and change permissions on executable files [chmod +x fileName]
 
-For spotify shortcut wmctrl is needed [sudo apt install wmctrl] and spoti script must be placed in /usr/bin/
+For spotify shortcut wmctrl is needed `sudo apt install wmctrl` and spoti script must be placed in `/usr/bin/`
 
 ## newRepo $1 $2
 
@@ -19,9 +19,9 @@ Checks if Spotify is opened to then open it (if not open) or bring window to fro
 ## gitUpdate
 
 Updates git repositories for parent and child folders up decided by user[default= ./] up to depth input by user (default = 2)
- 		Usage: gitUpdate [folder] [depth] or gitUpdate -f/--folder [folder] -d/--depth [depth]
+ 		Usage: `gitUpdate [folder] [depth]` or `gitUpdate -f/--folder [folder] -d/--depth [depth]`
 
 ## beforeIgo
 
 Shows status for git repositories for parent and child folders up decided by user[default= ./] up to depth input by user (default = 2)
- 		Usage: beforeIgo [folder] [depth] or gitUpdate -f/--folder [folder] -d/--depth [depth]
+ 		Usage: `beforeIgo [folder] [depth]` or `gitUpdate -f/--folder [folder] -d/--depth [depth]`
