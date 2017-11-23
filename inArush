@@ -8,16 +8,12 @@
 				# -d or --depth for depth
 				# -m or --message for message
 
+# Default Values				
 DEPTH=1
 FOLDER="./"
 MSG="Automated update [Might not work]"
 
-if (( "$#" )); then
-	MSG=$3
-	DEPTH=$2
-	FOLDER=$1
-fi
-
+# Formatting options
 BLACK="\033[30m"
 RED="\033[31m"
 GREEN="\033[32m"
@@ -32,6 +28,15 @@ BLKBKG="\e[40m"
 UNDRLN="\e[4m"
 #echo $DEPTH
 
+
+# Catch simple input
+if (( "$#" )); then
+	MSG=$3
+	DEPTH=$2
+	FOLDER=$1
+fi
+
+
 # Read options
 while (( "$#" )); do
 	case $1 in
@@ -41,10 +46,9 @@ while (( "$#" )); do
 			#echo "Folder Option: $FOLDER"
 			;;
 		-m|--message)
-			shift
-			echo $1
-			MSG=$1
-			#echo "Message Option: $MSG"
+			# Catch message for commits -can be ommitted-
+			echo "Message for the commit --Remember it will apply to all git repos--"
+			read MSG
 			;;
 		-d|--depth)
 			shift
@@ -64,4 +68,4 @@ done
 
 		
 # Search and show
-find ${FOLDER} -maxdepth ${DEPTH} -name ".git" -execdir printf "\n${BOLD}${BLKBKG}${UNDRLN}${YELLOW}Directory:${NC}  " \; -execdir pwd \; -execdir git commit -am "trying to debug" \; -execdir git push \; -execdir printf "\n" \;
+find ${FOLDER} -maxdepth ${DEPTH} -name ".git" -execdir printf "\n${BOLD}${BLKBKG}${UNDRLN}${YELLOW}Directory:${NC}  " \; -execdir pwd \; -execdir git commit -am "$MSG" \; -execdir git push \; -execdir printf "\n" \;
