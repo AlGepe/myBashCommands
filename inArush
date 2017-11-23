@@ -2,14 +2,18 @@
 
 # $1 is the parent directory from which we start the search 
 # $2 is the max depth of the search from parent directory
+# $3 Commit message
 # Inputs can be missordered if proper tags are provided:
 				# -f or --folder for parent directory
 				# -d or --depth for depth
+				# -m or --message for message
 
 DEPTH=1
 FOLDER="./"
-#echo $DEPTH
+MSG="Automated update [Might not work]"
+
 if (( "$#" )); then
+	MSG=$3
 	DEPTH=$2
 	FOLDER=$1
 fi
@@ -36,6 +40,12 @@ while (( "$#" )); do
 			FOLDER=$1
 			#echo "Folder Option: $FOLDER"
 			;;
+		-m|--message)
+			shift
+			echo $1
+			MSG=$1
+			#echo "Message Option: $MSG"
+			;;
 		-d|--depth)
 			shift
 			echo $1
@@ -54,4 +64,4 @@ done
 
 		
 # Search and show
-find ${FOLDER} -maxdepth ${DEPTH} -name ".git" -execdir printf "\n${BOLD}${BLKBKG}${UNDRLN}${YELLOW}Directory:${NC}  " \; -execdir pwd \; -execdir git commit -am "Automated update [Might not work]" \; -execdir git push \; -execdir printf "\n" \;
+find ${FOLDER} -maxdepth ${DEPTH} -name ".git" -execdir printf "\n${BOLD}${BLKBKG}${UNDRLN}${YELLOW}Directory:${NC}  " \; -execdir pwd \; -execdir git commit -am "trying to debug" \; -execdir git push \; -execdir printf "\n" \;
