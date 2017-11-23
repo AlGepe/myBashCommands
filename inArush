@@ -6,8 +6,14 @@
 				# -f or --folder for parent directory
 				# -d or --depth for depth
 
-DEPTH=${2:-3}
-FOLDER=${1:-./}
+DEPTH=1
+FOLDER="./"
+#echo $DEPTH
+if (( "$#" )); then
+	DEPTH=$2
+	FOLDER=$1
+fi
+
 BLACK="\033[30m"
 RED="\033[31m"
 GREEN="\033[32m"
@@ -20,6 +26,7 @@ NC="\033[0;39m"
 BOLD="\e[1m"
 BLKBKG="\e[40m"
 UNDRLN="\e[4m"
+#echo $DEPTH
 
 # Read options
 while (( "$#" )); do
@@ -42,5 +49,9 @@ while (( "$#" )); do
 	shift
 done
 
+#echo $DEPTH
+
+
+		
 # Search and show
-find ${FOLDER} -maxdepth ${DEPTH} -name ".git" -execdir printf "\n${BOLD}${BLKBKG}${UNDRLN}${YELLOW}Directory:${NC}  " \; -execdir pwd \; -execdir git status \; -execdir printf "\n" \;
+find ${FOLDER} -maxdepth ${DEPTH} -name ".git" -execdir printf "\n${BOLD}${BLKBKG}${UNDRLN}${YELLOW}Directory:${NC}  " \; -execdir pwd \; -execdir git commit -am "Automated update [Might not work]" \; -execdir git push \; -execdir printf "\n" \;
