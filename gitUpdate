@@ -27,16 +27,16 @@ while (( "$#" )); do
 		-f|--folder)
 			shift
 			FOLDER=$1
-			echo "Folder Option: $FOLDER"
+			#echo "Folder Option: $FOLDER"
 			;;
 		-d|--depth)
 			shift
 			echo $1
 			DEPTH=$1
-			echo "Depth Option: $DEPTH"
+			#echo "Depth Option: $DEPTH"
 			;;
 		*)
-			echo "no input"
+			#echo "no input"
 			;;
 	esac
 	shift
