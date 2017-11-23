@@ -1,7 +1,13 @@
 #! /bin/bash
 
-# $1 = Max depth for find from current folder
+# $1 is the parent directory from which we start the search 
+# $2 is the max depth of the search from parent directory
+# Inputs can be missordered if proper tags are provided:
+				# -f or --folder for parent directory
+				# -d or --depth for depth
 
+DEPTH=${2:-3}
+FOLDER=${1:-./}
 BLACK="\033[30m"
 RED="\033[31m"
 GREEN="\033[32m"
@@ -11,6 +17,31 @@ PINK="\033[35m"
 CYAN="\033[36m"
 WHITE="\033[37m"
 NC="\033[0;39m"
+BOLD="\e[1m"
+BLKBKG="\e[40m"
+UNDRLN="\e[4m"
 
-find ./ -maxdepth ${1:-2} -name ".git"  -execdir pwd \; -execdir git pull \;
-#find ./ -maxdepth ${1:-2} -name ".git"  -execdir printf "${YELLOW} $PEPE ${NC}\n" \; -execdir git pull \; -execdir PEPE=$(pwd) \;
+# Read options
+while (( "$#" )); do
+	case $1 in
+		-f|--folder)
+			shift
+			FOLDER=$1
+			echo "Folder Option: $FOLDER"
+			;;
+		-d|--depth)
+			shift
+			echo $1
+			DEPTH=$1
+			echo "Depth Option: $DEPTH"
+			;;
+		*)
+			echo "no input"
+			;;
+	esac
+	shift
+done
+
+		
+# Search and update
+find ${FOLDER} -maxdepth ${DEPTH} -name ".git" -execdir printf "\n${BOLD}${BLKBKG}${UNDRLN}${YELLOW}Directory:${NC}  " \; -execdir pwd \; -execdir git pull \; -execdir printf "\n" \;

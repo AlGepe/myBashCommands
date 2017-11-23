@@ -16,6 +16,12 @@ Creates a new github repository with name $1 for user $2. $2 is optional and dea
 
 Checks if Spotify is opened to then open it (if not open) or bring window to front (if already open)
 
-## updateWork
+## gitUpdate
 
-Updates git repositories for current and child folders up to depth input by user (default = 2)
+Updates git repositories for parent and child folders up decided by user[default= ./] up to depth input by user (default = 2)
+ 		Usage: gitUpdate [folder] [depth] or gitUpdate -f/--folder [folder] -d/--depth [depth]
+
+## beforeIgo
+
+Shows status for git repositories for parent and child folders up decided by user[default= ./] up to depth input by user (default = 2)
+ 		Usage: beforeIgo [folder] [depth] or gitUpdate -f/--folder [folder] -d/--depth [depth]
